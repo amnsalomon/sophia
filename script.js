@@ -1,5 +1,5 @@
 'use strict';
-// Sem bibliotecas, chaves de API, cookies de marketing ou dependências de build.
+// Sem bibliotecas ou dependências de build. Medição configurada separadamente em config.js.
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 function closeMenu() {
@@ -100,6 +100,7 @@ if (form) {
       return;
     }
     configureReturn();
+    window.SophiaTracking?.formAttempt();
     submit.disabled = true;
     submit.textContent = 'Continuando para o envio…';
     status.textContent = 'Aguarde a confirmação na próxima tela.';
