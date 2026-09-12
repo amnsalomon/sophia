@@ -12,7 +12,7 @@ window.SOPHIA_CONFIG = Object.freeze({
   formspreeEndpoint: "https://formspree.io/f/xvkonjny",
 
   // Meta: ID numérico do Pixel. Exemplo de formato: "123456789012345".
-  metaPixelId: "",
+  metaPixelId: "423973299046967",
 
   // Google Analytics 4: ID de medição iniciado por G-. Exemplo: "G-XXXXXXXXXX".
   // Use o ID do fluxo da Web do GA4, não GTM-, AW-, UA- ou ID de propriedade numérico.
