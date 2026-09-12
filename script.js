@@ -69,7 +69,7 @@ document.querySelectorAll('[data-video]').forEach(cover => {
 // Formulário HTML nativo: mantém a proteção reCAPTCHA padrão do FormSubmit.
 // Confirmação inicial do destinatário é obrigatória. Consulte LEIA-ME.md.
 const form = document.querySelector('#contact-form');
-if (form) {
+if (form && !form.hasAttribute('data-formspree-active')) {
   const phone = form.querySelector('#phone');
   const name = form.querySelector('#name');
   const email = form.querySelector('#email');

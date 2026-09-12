@@ -1,3 +1,5 @@
+> **Atualização com página de leads:** comece pelo arquivo `COMECE-AQUI.md`. Ele explica o Formspree e a conversão do Google Ads. As instruções de FormSubmit abaixo se aplicam apenas ao formulário anterior, mantido como alternativa enquanto o Formspree não for configurado.
+
 # SophIA — site estático para GitHub Pages
 
 Página institucional criada a partir da apresentação “Novo Modelo de Proposta SophIA 0726” e do site https://sophia.starmindai.ai, consultado em 11/09/2026.

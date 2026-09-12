@@ -3,7 +3,9 @@
   const config = window.SOPHIA_CONFIG || {};
   const metaId = /^\d{5,25}$/.test(config.metaPixelId || '') ? config.metaPixelId : '';
   const gaId = /^G-[A-Z0-9]+$/.test(config.googleAnalyticsId || '') ? config.googleAnalyticsId : '';
-  if (!metaId && !gaId) return;
+  const adsId = /^AW-\d+$/.test(config.googleAdsId || '') ? config.googleAdsId : '';
+  const adsLabel = /^[A-Za-z0-9_-]+$/.test(config.googleAdsConversionLabel || '') ? config.googleAdsConversionLabel : '';
+  if (!metaId && !gaId && !adsId) return;
   const CONSENT = 'sophia_marketing_choice_v1';
   const PENDING = 'sophia_contact_pending_v1';
   let allowed = false;
@@ -31,16 +33,21 @@
       fbq('track', 'PageView');
       load('https://connect.facebook.net/en_US/fbevents.js');
     }
-    if (gaId) {
+    if (gaId || adsId) {
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('consent', 'default', {
-        analytics_storage: 'granted', ad_storage: 'denied',
+        analytics_storage: 'denied', ad_storage: 'denied',
         ad_user_data: 'denied', ad_personalization: 'denied'
       });
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted', ad_storage: adsId ? 'granted' : 'denied',
+        ad_user_data: adsId ? 'granted' : 'denied', ad_personalization: 'denied'
+      });
       window.gtag('js', new Date());
-      window.gtag('config', gaId, { send_page_view: true, allow_google_signals: false, allow_ad_personalization_signals: false });
-      load(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`);
+      if (gaId) window.gtag('config', gaId, { send_page_view: true, allow_google_signals: false, allow_ad_personalization_signals: false });
+      if (adsId) window.gtag('config', adsId, { allow_ad_personalization_signals: false });
+      load(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId || adsId)}`);
     }
   }
   function event(googleName, metaName, params = {}, standard = false) {
@@ -55,11 +62,23 @@
     if (now - (recent.get(key) || 0) < 1000) return;
     recent.set(key, now); run();
   }
+  const completedLeads = new Set();
   window.SophiaTracking = Object.freeze({
-    formAttempt() {
+    formSuccess(receipt) {
+      if (!allowed || !receipt?.consentAtSubmission || !/^[a-zA-Z0-9-]{12,100}$/.test(receipt.id) || !['leads', 'homepage'].includes(receipt.source)) return false;
+      if (completedLeads.has(receipt.id)) return true;
+      completedLeads.add(receipt.id);
+      const params = { form_id: receipt.source === 'leads' ? 'leads-form' : 'contact-form', conversion_source: 'formspree_confirmed', lead_id: receipt.id };
+      event('generate_lead', 'Lead', params, true);
+      if (adsId && adsLabel && window.gtag) window.gtag('event', 'conversion', {
+        send_to: `${adsId}/${adsLabel}`, transaction_id: receipt.id
+      });
+      return true;
+    },
+    formAttempt(formId) {
       if (!allowed) return;
-      write('sessionStorage', PENDING, String(Date.now()));
-      event('contact_form_submit_attempt', 'ContactFormSubmitAttempt', { form_id: 'contact-form' });
+      if (!formId) write('sessionStorage', PENDING, String(Date.now()));
+      event('contact_form_submit_attempt', 'ContactFormSubmitAttempt', { form_id: formId || 'contact-form' });
     }
   });
   // Conversão no retorno do formulário: exige tentativa recente nesta mesma aba.
@@ -74,10 +93,10 @@
     }
   }
   let formStarted = false;
-  document.querySelector('#contact-form')?.addEventListener('input', ev => {
+  document.querySelector('#contact-form, #leads-form')?.addEventListener('input', ev => {
     if (!allowed || formStarted || !['name', 'phone', 'email', 'company'].includes(ev.target.id)) return;
     formStarted = true;
-    event('contact_form_start', 'ContactFormStart', { form_id: 'contact-form' });
+    event('contact_form_start', 'ContactFormStart', { form_id: ev.currentTarget.id });
   });
   document.addEventListener('click', ev => {
     if (!allowed) return;
