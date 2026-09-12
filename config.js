@@ -9,7 +9,7 @@ window.SOPHIA_CONFIG = Object.freeze({
   // Formato: https://formspree.io/f/SEU_ID (não é uma chave secreta).
   // Destinatário a configurar no painel: contato@starmindai.ai.
   // Vazio: a página /leads/ não envia; o formulário antigo mantém o FormSubmit.
-  formspreeEndpoint: "",
+  formspreeEndpoint: "https://formspree.io/f/xvkonjny",
 
   // Meta: ID numérico do Pixel. Exemplo de formato: "123456789012345".
   metaPixelId: "",
