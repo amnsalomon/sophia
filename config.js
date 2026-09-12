@@ -20,6 +20,6 @@ window.SOPHIA_CONFIG = Object.freeze({
 
   // Google Ads: ID AW- e rótulo da conversão "Envio de formulário de lead".
   // Copie do snippet fornecido pelo Google Ads. Não use o número da conta.
-  googleAdsId: "",
+  googleAdsId: "AW-18447286474",
   googleAdsConversionLabel: ""
 });
