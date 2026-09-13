@@ -1,3 +1,5 @@
+> **Atualização v5:** preserve seu `config.js` preenchido ao publicar. Leia `ATUALIZACAO-v5.md` para os detalhes desta versão.
+
 # SophIA — site completo com página de leads
 
 O ZIP contém o site principal e todas as imagens anteriores, a nova página de campanha e o agradecimento. O domínio permanece `sophia.starmindai.ai`. A seção “Por trás da SophIA” tem um link em destaque para conhecer a StarMind; o link também está no rodapé da página de leads e do agradecimento.

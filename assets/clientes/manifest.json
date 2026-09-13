@@ -1,0 +1,107 @@
+{
+  "titulo": "Clientes",
+  "pasta": "assets/clientes",
+  "total": 20,
+  "itens": [
+    {
+      "arquivo": "01-wap.png",
+      "nome": "WAP",
+      "url": "assets/clientes/01-wap.png"
+    },
+    {
+      "arquivo": "02-unimed.jpg",
+      "nome": "Unimed",
+      "url": "assets/clientes/02-unimed.jpg"
+    },
+    {
+      "arquivo": "03-eletronet.png",
+      "nome": "Eletronet",
+      "url": "assets/clientes/03-eletronet.png"
+    },
+    {
+      "arquivo": "04-supermercados-boa.png",
+      "nome": "Supermercados BOA",
+      "url": "assets/clientes/04-supermercados-boa.png"
+    },
+    {
+      "arquivo": "05-maravilhas-do-lar.png",
+      "nome": "Maravilhas do Lar",
+      "url": "assets/clientes/05-maravilhas-do-lar.png"
+    },
+    {
+      "arquivo": "06-clinica-fares.png",
+      "nome": "Clínica Fares",
+      "url": "assets/clientes/06-clinica-fares.png"
+    },
+    {
+      "arquivo": "07-fleming.png",
+      "nome": "Fleming",
+      "url": "assets/clientes/07-fleming.png"
+    },
+    {
+      "arquivo": "08-rhopen.svg",
+      "nome": "RHOPEN",
+      "url": "assets/clientes/08-rhopen.svg"
+    },
+    {
+      "arquivo": "09-topwork.jpg",
+      "nome": "TopWork",
+      "url": "assets/clientes/09-topwork.jpg"
+    },
+    {
+      "arquivo": "10-energimp.png",
+      "nome": "Energimp",
+      "url": "assets/clientes/10-energimp.png"
+    },
+    {
+      "arquivo": "11-grupo-centers.png",
+      "nome": "Grupo Centers",
+      "url": "assets/clientes/11-grupo-centers.png"
+    },
+    {
+      "arquivo": "12-magna.png",
+      "nome": "Magna",
+      "url": "assets/clientes/12-magna.png"
+    },
+    {
+      "arquivo": "13-tm-associados.png",
+      "nome": "TM Associados",
+      "url": "assets/clientes/13-tm-associados.png"
+    },
+    {
+      "arquivo": "14-florarte.jpg",
+      "nome": "Florarte",
+      "url": "assets/clientes/14-florarte.jpg"
+    },
+    {
+      "arquivo": "15-umbrella-talent.png",
+      "nome": "Umbrella Talent",
+      "url": "assets/clientes/15-umbrella-talent.png"
+    },
+    {
+      "arquivo": "16-bambini.png",
+      "nome": "Bambini",
+      "url": "assets/clientes/16-bambini.png"
+    },
+    {
+      "arquivo": "17-interplus.png",
+      "nome": "Interplus",
+      "url": "assets/clientes/17-interplus.png"
+    },
+    {
+      "arquivo": "18-nivoloni.jpeg",
+      "nome": "Nivoloni",
+      "url": "assets/clientes/18-nivoloni.jpeg"
+    },
+    {
+      "arquivo": "19-rhino.png",
+      "nome": "Rhino",
+      "url": "assets/clientes/19-rhino.png"
+    },
+    {
+      "arquivo": "20-nosso-teto.png",
+      "nome": "Nosso Teto",
+      "url": "assets/clientes/20-nosso-teto.png"
+    }
+  ]
+}
